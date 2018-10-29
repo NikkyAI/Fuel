@@ -62,12 +62,12 @@ The easiest HTTP networking library for Kotlin/Android.
 ### Dependency - fuel-kotlinx-serialization
 
 * [Kotlinx Serialization](https://github.com/Kotlin/kotlinx.serialization) - Kotlinx Serialization - Kotlin cross-platform / multi-format serialization
-see [fuel-kotlinx-serialization](docs/fuel-kotlinx-serialization)
+see [fuel-kotlinx-serialization](./fuel-kotlinx-serialization)
 
 ### Dependency - fuel-gson
 
 * [Gson](https://github.com/google/gson) - Gson - A Java serialization/deserialization library to convert Java Objects into JSON and back
-see [fuel-gson](docs/fuel-gson)
+see [fuel-gson](./fuel-gson)
 
 ### Dependency - fuel-jackson
 
@@ -541,19 +541,13 @@ data class User(val firstName: String = "",
 
 ### Gson Deserialization
 
-* Fuel also provides a built in support for Gson Deserialization. This is possible by including the [Gson](https://github.com/kittinunf/Fuel/tree/master/fuel-gson) module in your dependency block.
+Fuel also provides a built in support for Gson Deserialization. This is possible by including the [Gson](./fuel-gson) module in your dependency block.
 
-```kotlin
-
-data class HttpBinUserAgentModel(var userAgent: String = "")
-
-Fuel.get("/user-agent").responseObject<HttpBinUserAgentModel> { _, _, result ->
-}
-```
+see [fuel-gson](./fuel-gson)
 
 ### kotlinx-serialization
 
-see [fuel-kotlinx-serialization](docs/fuel-kotlinx-serialization)
+see [fuel-kotlinx-serialization](./fuel-kotlinx-serialization)
 
 * There are 4 methods to support response deserialization depending on your needs (also depending on JSON parsing library of your choice), and you are required to implement only one of them.
 
