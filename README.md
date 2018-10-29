@@ -1,6 +1,6 @@
 # Fuel
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.3.0.rc.146-blue.svg)](https://kotlinlang.org) 
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.3.0-blue.svg)](https://kotlinlang.org) 
 [![jcenter](https://api.bintray.com/packages/kittinunf/maven/Fuel-Android/images/download.svg)](https://bintray.com/kittinunf/maven/Fuel-Android/_latestVersion) 
 [![Build Status](https://travis-ci.org/kittinunf/Fuel.svg?branch=master)](https://travis-ci.org/kittinunf/Fuel)
 [![Codecov](https://codecov.io/github/kittinunf/Fuel/coverage.svg?branch=master)](https://codecov.io/gh/kittinunf/Fuel)
@@ -22,7 +22,7 @@ The easiest HTTP networking library for Kotlin/Android.
 - [x] Special test mode for easier testing
 - [x] Support for reactive programming via RxJava 2.x and Project Reactor 3.x
 - [x] Google Components [LiveData](https://developer.android.com/topic/libraries/architecture/livedata.html) support
-- [x] Built-in object serialization module (Gson, Jackson, Moshi, Forge) :sparkles:
+- [x] Built-in object serialization module (kotlinx-serialization, Gson, Jackson, Moshi, Forge) :sparkles:
 - [x] Support Kotlin's [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) module
 - [x] API Routing
 
@@ -62,10 +62,12 @@ The easiest HTTP networking library for Kotlin/Android.
 ### Dependency - fuel-kotlinx-serialization
 
 * [Kotlinx Serialization](https://github.com/Kotlin/kotlinx.serialization) - Kotlinx Serialization - Kotlin cross-platform / multi-format serialization
+see [fuel-kotlinx-serialization](docs/fuel-kotlinx-serialization)
 
 ### Dependency - fuel-gson
 
 * [Gson](https://github.com/google/gson) - Gson - A Java serialization/deserialization library to convert Java Objects into JSON and back
+see [fuel-gson](docs/fuel-gson)
 
 ### Dependency - fuel-jackson
 
@@ -549,51 +551,9 @@ Fuel.get("/user-agent").responseObject<HttpBinUserAgentModel> { _, _, result ->
 }
 ```
 
-### Deserialization using kotlinx.serialzationn
+### kotlinx-serialization
 
-_requires the [kotlinx-serialization extension](#dependency---fuel-kotlinx-serialization)_
-_requires [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization#gradlejvm)_
-
-
-```kotlin
-@Serializable
-data class HttpBinUserAgentModel(var userAgent: String = "")
-
-Fuel.get("/user-agent").responseObject<HttpBinUserAgentModel> { _, _, result ->
-}
-```
-
-this is by default strict and will reject unknown keys, for that you can pass a custom JSOn instance
-
-JSON(nonstrict = true)
-```kotlin
-@Serializable
-data class HttpBinUserAgentModel(var userAgent: String = "")
-
-Fuel.get("/user-agent").responseObject<HttpBinUserAgentModel>(json = JSON(nonstrict = true)) { _, _, result ->
-}
-```
-
-kotlinx.serialization can not always guess the correct serialzer to use, when generics are involved for example
-
-```kotlin
-@Serializable
-data class HttpBinUserAgentModel(var userAgent: String = "")
-
-Fuel.get("/list/user-agent").responseObject<HttpBinUserAgentModel>(loader = HttpBinUserAgentModel.serilaizer().list) { _, _, result ->
-}
-```
-
-it can be used with coroutines by using `kotlinxDeserilaizerOf()` it takes the same `json` and `loader` as parameters
-
-```kotlin
-@Serializable
-data class HttpBinUserAgentModel(var userAgent: String = "")
-
-Fuel.get("/user-agent").awaitResponseObject<HttpBinUserAgentModel>(kotlinxDeserializerOf()) { _, _, result ->
-}
-```
-
+see [fuel-kotlinx-serialization](docs/fuel-kotlinx-serialization)
 
 * There are 4 methods to support response deserialization depending on your needs (also depending on JSON parsing library of your choice), and you are required to implement only one of them.
 
