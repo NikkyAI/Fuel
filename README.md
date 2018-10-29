@@ -62,11 +62,13 @@ The easiest HTTP networking library for Kotlin/Android.
 ### Dependency - fuel-kotlinx-serialization
 
 * [Kotlinx Serialization](https://github.com/Kotlin/kotlinx.serialization) - Kotlinx Serialization - Kotlin cross-platform / multi-format serialization
+
 see [fuel-kotlinx-serialization](./fuel-kotlinx-serialization)
 
 ### Dependency - fuel-gson
 
 * [Gson](https://github.com/google/gson) - Gson - A Java serialization/deserialization library to convert Java Objects into JSON and back
+
 see [fuel-gson](./fuel-gson)
 
 ### Dependency - fuel-jackson
@@ -541,8 +543,7 @@ data class User(val firstName: String = "",
 
 ### Gson Deserialization
 
-Fuel also provides a built in support for Gson Deserialization. This is possible by including the [Gson](./fuel-gson) module in your dependency block.
-
+Fuel also provides a built in support for Gson Deserialization. This is possible by including the [Gson](./fuel-gson) module in your dependency block.  
 see [fuel-gson](./fuel-gson)
 
 ### kotlinx-serialization

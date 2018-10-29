@@ -59,7 +59,7 @@ val (request, response, result) = "/user-agent".httpGet()
     .responseObject<HttpBinUserAgentModel>()
 ```
 
-this is by default strict and will reject unknown keys, for that you can pass a custom JSOn instance
+this is by default strict and will reject unknown keys, for that you can pass a custom `JSON` instance
 
 JSON(nonstrict = true)
 
